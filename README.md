@@ -122,7 +122,10 @@
 #### 18. 将原代码行作为注释写入/add_original_comments （可选）
 ###### 由于本工具不保证修改后百分百不报错，将修改过原属性声明和方法名作为注释写入，方便在重建工程后报错与原工程进行对照，建议设置
 
-#### 19. 综合配置路径 （可选）
+#### 19. 修改方法内部局部变量名/change_local_property （可选）
+###### 定义在方法内部的局部变量，可选择是否修改
+
+#### 20. 综合配置路径 （可选）
 ###### json配置文件路径，内部必须为字典，key为说明条目标题后面的英文
 ##### 请注意：配置文件优先级高于输入框输入的规则，配置文件存在时, 输入框输入的配置不生效
 ##### 例：(可直接复制修改)
@@ -147,13 +150,15 @@
     
     "change_category": true,
     
-    "add_original_comments": false,
+    "add_original_comments": true,
     
     "class_prefix": "",
     
     "property_prefix": "",
     
     "add_preposition": true,
+
+    "change_local_property": true,
     
     "verbwords_path": "",
     
