@@ -22,10 +22,7 @@
 ##### 下载项目，或者git clone, 安装 Code Builder.dmg
 
 
-<!-- #### 视频演示
-<video id="video" controls="" preload="none" poster="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg">
-      <source id="mp4" src="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4" type="video/mp4">
-      </video> -->
+# [演示视频](https://www.bilibili.com/video/BV1ib4y1y7CD/)
 
 #### 注意：
 ##### 说明中提到的路径均为绝对路径，提到的逗号```,```都为英文逗号。使用工具运行成功后，需要自己新建OC项目再将修改后的代码与资源文件拖入新建的工程。
