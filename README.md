@@ -9,6 +9,7 @@
 #### 1. 该工具可以让你一键翻新代码，但是不是生成完整的xcode项目，需要你自己新建一个xcode项目，然后把翻新的文件拖入到新的项目中。
 #### 2. 该工具只支持Object-C, 如果反响好的话，考虑添加swift或者其他语言支持.
 
+
 >几个效果展示
 ![自动修改类名与属性名](./images/effection_01.png)
 
@@ -17,6 +18,14 @@
 ![支持分类，支持方法内部局部变量名修改](./images/effection_03.png)
 
 ## 使用说明
+
+##### 下载项目，或者git clone, 安装 Code Builder.dmg
+
+
+<!-- #### 视频演示
+<video id="video" controls="" preload="none" poster="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.jpg">
+      <source id="mp4" src="http://img.blog.fandong.me/2017-08-26-Markdown-Advance-Video.mp4" type="video/mp4">
+      </video> -->
 
 #### 注意：
 ##### 说明中提到的路径均为绝对路径，提到的逗号```,```都为英文逗号。使用工具运行成功后，需要自己新建OC项目再将修改后的代码与资源文件拖入新建的工程。
