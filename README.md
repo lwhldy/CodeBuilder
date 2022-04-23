@@ -2,7 +2,31 @@
 自动修改/翻新/混淆/OC/iOS代码，自动替换类名，方法名
 
 # 更新日志
-Version: 1.1 
+### Version: 1.2
+
+### 新增：
+#### 1.支持修改属性全局开关
+#### 2.支持修改方法全局开关
+#### 3.支持属性声明顺序随机
+#### 4.支持方法声明顺序随机
+#### 5.支持同文件内部多个类声明是顺序随机（指：@class xxxx）
+#### 6.支持头文件import顺序随机
+#### 7.支持静态常量定义顺序随机
+#### 8.支持interface类声明顺序随机
+#### 9.支持extentsion扩展声明顺序随机
+#### 10.支持implementation扩展声明顺序随机
+#### 11.支持代理声明顺序随机
+#### 12.支持block声明顺序随机
+#### 13.支持遵循代理顺序随机
+
+
+### 修复：
+#### 1.修复方法返回值带```*```时```*```号重复写入的问题
+#### 2.修复只修改类名的文件夹路径输入框与只修改类名文件名输入框配置互调的问题
+#### 3.修复到方法返回值不为void时，勾选源代码注释无效果的问题
+#### 4.修复任务完成时，Log依然显示"进程被终止..."的问题
+
+### Version: 1.1 
 #### 1.修复当文件到达一定量级后，某些情况下数组越界导致程序崩溃的问题
 #### 2.修复当block属性申明不规范时解析失败的问题
 #### 3.修复当方法返回值为block时解析不正确的问题
@@ -82,9 +106,9 @@ Version: 1.1
 
 #### 3. 直接复制的路径/copy_only_pathes（可选）
    ###### 直接复制，忽略的文件名，多个路径以```,```逗号隔开
-
+   ##### 例：某个文件夹内部是直接拖入到项目中使用的第三库，需要规避解析，可以直接把路径填入此项，工具会直接复制到目标文件夹
 #### 4. 直接复制的文件名(不包含后缀)/copy_only_names（可选）
-   ###### 直接复制，忽略的文件名，不包含后缀
+   ###### 直接复制，忽略的文件名，不包含后缀（同3）
    ##### 例：UISheetView.h 只需要输入UISheetView，多个文件用 ```,``` 逗号隔开（注意全半角，逗号为英文逗号）
 
 #### 5. 不进行修改的文件或文件夹/no_change_pathes（可选）
@@ -97,20 +121,33 @@ Version: 1.1
 
 #### 7. 不修改的文件后缀名(区分大小写)/no_change_class_prefix_names （可选）
    ###### 如第六条。Model,Info -->不修改以Model,Info为结尾的文件或类
+   
 
 #### 8. 只修改类名的文件名或类名/only_change_clsname_names （可选）
    ###### 深度读取，只修改类名，不修改内部属性与方法，这个优先级最低，如果之前的条件包含了本参数中的路径，则不生效
-
+   ##### 特别提醒：对于使用第三方模型解析库的项目，强烈建议使用此项配置，可以防止从服务器拿到的数据解析失败。
+   
 #### 9. 只修改类名的文件夹/文件路径/only_change_clsname_pathes （可选）
    ###### 深度读取，只修改类名，不修改内部属性与方法的文件名，这个优先级最低，如果之前的条件包含了本参数中的路径 则不生效
+   ##### 特别提醒：对于使用第三方模型解析库的项目，强烈建议使用此项配置，可以防止从服务器拿到的数据解析失败。
 
 #### 10. 动词词库路径/verbwords_path （可选）
 ###### 提供单词数组json文件路径\n修改的命名逻辑为ABAB型，A为动词，B为名词，
 ##### 例：getMessage
-
+json范例（可直接复制修改，忽略大小写，格式必须与范例一致，否则无法读取）：
+##### 容易出错的点：最后一个单词元素后面有逗号，这是不允许的
+```
+["make", "do", "get", "take"]
+```
 #### 11. 名词词库路径/nounwords_path （可选）
 ###### 提供单词数组json文件路径\n修改的命名逻辑为ABAB型，A为动词，B为名词，
 ##### 例：getMessage
+json范例（可直接复制修改，忽略大小写，格式必须与范例一致，否则无法读取）：
+##### 容易出错的点：最后一个单词元素后面有逗号，这是不允许的
+```
+["views", "something", "car", "house"]
+```
+
 
 #### 12. 类名前缀/class_prefix （可选）
 ###### 给每个类添加的前缀
@@ -123,22 +160,21 @@ Version: 1.1
 #### 14. 需要过滤的方法路径/filter_methods_path （可选）
 ###### 把你需要过滤的方法写入一个文本文件，然后将该文本路径填入到此项输入框
 ##### 注意事项:
-    1.确保填入的每个方法以';'分号结尾
-    
-    2.每一行只有一个方法
-    
-    格式示例：
+### 1.确保填入的每个方法以';'分号结尾
+### 2.每一行只有一个方法
+#### 格式示例(请严格按照示例填写，否则无法读取)：
     
     - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
     - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section;
     - (instancetype)initWithName:(NSString *)name content:(NSString *)content isPublic:(BOOL)isPublic; 
     
     
-##### 其他说明：本工具已经过滤了大多数常用系统方法，大部分情况下不需要配置此项。
+    
+##### 其他说明：本工具已经过滤了大多数常用系统方法，大部分系统方法无需配置，如果有第三方库的代理方法请务必配置，否则会导致代理被修改而无法正确调用。
     
 #### 15. 类名和属性名后缀路径/property_subfix_path （可选）
 ###### 给每个属性添加的后缀，需要一个配置json文件路径
-##### json格式：
+##### json格式(请严格按照示例填写，否则无法读取)：
     [
     {"UITableView":{"class":["TableView", "TabView"], "property":["TableView", "TBView", "TView"]}},
     {"UICollectionView":{"class":["CollectionView", "ColView"], "property":["ColView", "CollectView", "CTView"]}},
@@ -161,7 +197,51 @@ Version: 1.1
 #### 19. 修改方法内部局部变量名/change_local_property （可选）
 ###### 定义在方法内部的局部变量，可选择是否修改
 
-#### 20. 综合配置路径 （可选）
+## ------version1.2 新增-----
+#### 19. 修改属性/change_property （可选）
+###### 选择是否修修改属性声明，优先级最高
+
+#### 20. 修改方法/change_method （可选）
+###### 选择是否修修改方法，优先级最高
+
+#### 21. 属性声明乱序/properties_random （可选）
+###### 选择是否打乱属性声明
+
+#### 22. 方法声明乱序/methods_random （可选）
+###### 选择是否打乱方法声明和实现
+
+#### 23. block声明乱序/block_defines_random （可选）
+###### 选择是否打乱block声明
+
+#### 24. import头文件导入声明乱序/imports_random （可选）
+###### 选择是否打乱import头文件导入声明
+
+#### 25. 静态常量声明乱序/statics_random （可选）
+###### 选择是否打乱静态常量声明
+
+#### 26. @class声明乱序/class_defines_random （可选）
+###### 选择是否打乱@class声明，注意是@class 声明不是类声明的interface
+###### 例：@class A; @class B; @class C --> @class C, @class A; @class B; 
+
+#### 27. interface声明乱序/interfaces_random （可选）
+###### 选择是否打乱interface声明，当单个文件内有多个interface，可选择打乱排版
+
+#### 28. extension声明乱序/extensions_random （可选）
+###### 选择是否打乱extension声明，当单个文件内有多个extension，可选择打乱排版
+
+#### 29. implementation声明乱序/implementations_random （可选）
+###### 选择是否打乱implementation声明，当单个文件内有多个implementation，可选择打乱排版
+
+
+#### 30. delegate声明乱序/delegates_random （可选）
+###### 选择是否打乱delegate声明，当单个文件内有多个delegate，可选择打乱排版
+
+#### 31. 遵循代理声明乱序/complied_delegates_random （可选）
+###### 选择是否打乱遵循代理，当单个类遵循多个delegate，可选择打乱排版，注意与第30条的区别，第30条是代理定义声明，本条是遵循代理声明
+###### 例：<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate> ---> <UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate>
+
+
+#### 32. 综合配置路径 （可选，强烈建议使用综合配置，方便快捷）
 ###### json配置文件路径，内部必须为字典，key为说明条目标题后面的英文
 ##### 请注意：配置文件优先级高于输入框输入的规则，配置文件存在时, 输入框输入的配置不生效
 ##### 例：(可直接复制修改)
@@ -203,6 +283,34 @@ Version: 1.1
     "filter_methods_path": "",
     
     "property_subfix_path": ""
+
+    "change_local_property": true, 
+    
+    "change_property": true, 
+    
+    "change_method": true, 
+    
+    "properties_random": false, 
+    
+    "methods_random": false, 
+    
+    "block_defines_random": false, 
+    
+    "imports_random": false, 
+    
+    "statics_random": false, 
+    
+    "class_defines_random": false, 
+    
+    "interfaces_random": false, 
+    
+    "extensions_random": false, 
+    
+    "implementations_random": false,
+    
+    "delegates_random": false,
+    
+    "complied_delegates_random": false
     
     }
     
