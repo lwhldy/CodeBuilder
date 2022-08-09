@@ -292,7 +292,7 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
     "property_prefix": "",
     
     "add_preposition": true,
-
+    
     "change_local_property": true,
     
     "verbwords_path": "",
@@ -301,8 +301,8 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
     
     "filter_methods_path": "",
     
-    "property_subfix_path": ""
-
+    "property_subfix_path": "",
+    
     "change_local_property": true, 
     
     "change_property": true, 
