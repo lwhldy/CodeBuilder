@@ -1,6 +1,9 @@
 # CodeBuilder
 自动修改/翻新/混淆/OC/iOS代码，自动替换类名，方法名
 # 更新日志
+> ### Version: 1.4
+### 新增:
+#### 1.修改图片资源MD5值
 > ### Version: 1.3
 ### 修复：
 #### 1.修复勾选静态常量乱序时，修改无效的bug
@@ -46,6 +49,7 @@
 #### 3.目前免费使用，免费使用，免费使用，重要的事情说三遍
 #### 4.因为GUI由Python编写，部分电脑上打开程序会慢一些或无反应，请多点击几次，耐心等待片刻，GUI不影响代码解析速度。
 #### 5.软件开始运行时会清空目标文件夹内所有文件，请务必新建文件夹作为导出路径。
+#### 6.虽然工具内置词库，但还是强烈建议配置自己的词库，达到最优的混淆效果。
 ![界面](./images/app_GUI.png)
 
 >几个效果展示
@@ -259,8 +263,11 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
 ###### 选择是否打乱遵循代理，当单个类遵循多个delegate，可选择打乱排版，注意与第30条的区别，第30条是代理定义声明，本条是遵循代理声明
 ###### 例：<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate> ---> <UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate>
 
+#### 32. 修改图片MD5值/change_image_md5 （可选）
+###### 图片混淆
 
-#### 32. 综合配置路径 （可选，强烈建议使用综合配置，方便快捷）
+
+#### 33. 综合配置路径 （可选，强烈建议使用综合配置，方便快捷）
 ###### json配置文件路径，内部必须为字典，key为说明条目标题后面的英文
 ##### 请注意：配置文件优先级高于输入框输入的规则，配置文件存在时, 输入框输入的配置不生效
 ##### 例：(可直接复制修改)
@@ -303,8 +310,6 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
     
     "property_subfix_path": "",
     
-    "change_local_property": true, 
-    
     "change_property": true, 
     
     "change_method": true, 
@@ -329,9 +334,10 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
     
     "delegates_random": false,
     
-    "complied_delegates_random": false
+    "complied_delegates_random": false,
     
+    "change_image_md5": true
     }
     
-#### 20. 关于bug
+#### 其他. 关于bug
 ###### 虽然工具本身经过了完整的商业项目的考验，但由于每个人的代码风格不一样，工具不可避免会出现解析不了的情况，开发者建议过滤C语言的文件，与第三方库，减少出错的可能性，还是无法运行成功，你可以发isssue，或者将源码与问题发到feedback_ios@yeah.net，或根据报错Log自行删减项目文件，其中利弊，自行斟酌。
