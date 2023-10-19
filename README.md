@@ -24,6 +24,9 @@
 感谢各位的支持，不胜感激。篇幅有限，仅展示部分付款截图。
 ![付款1](./images/payment_01.JPG)
 ![付款2](./images/payment_02.JPG)
+> GUI
+
+![界面](./images/app_GUI.png)
 
 >几个效果展示
 
