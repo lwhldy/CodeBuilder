@@ -31,6 +31,8 @@
     23.支持代理声明乱序
     24.支持block声明乱序
     25.支持遵循代理乱序
+    26.混淆但不修改类名
+    25.全局混淆但不修改类名
 ##### 未来可能添加的功能：
 ######
 
@@ -136,69 +138,77 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
     ]
 ##### 注意：key一定要与上面一直，否则系统无法读取，工具会遍历数组，为对应的类匹配后缀，在配置改文件时，包含相同字符串的类，需要将类名更长的类放在前面，不然匹配结果会达不到预期。
 ##### 例如：UITableView与UIView，配置时需要将UITableView放在View之前，如上面的例子。
-    
-#### 16. 为方法名添加介词/add_preposition （可选）
+
+#### 16. 混淆但不修改类名的路径/no_change_classname_path （可选）
+###### 内部代码混淆，但类名不变，支持多个路径，以<,>逗号隔开，注意全半角
+
+#### 17. 混淆但全局不修改类名/no_change_classname_all （可选）
+###### 内部代码混淆，但类名不变，全局开关，优先级大于《混淆但不修改类名的路径》选项
+
+#### 18. 为方法名添加介词/add_preposition （可选）
 ###### 工具内置了所有介词，可选择性添加
 ##### 例：getMessage添加介词后---> getAMessage or getTheMessage
 ##### 具体介词完全随机添加
 
-#### 17. 修改分类/change_category （可选）
+#### 19. 修改分类/change_category （可选）
 ###### 工具会自动识别分类，可选择是否修改
 
-#### 18. 将原代码行作为注释写入/add_original_comments （可选）
+#### 20. 将原代码行作为注释写入/add_original_comments （可选）
 ###### 由于本工具不保证修改后百分百不报错，将修改过原属性声明和方法名作为注释写入，方便在重建工程后报错与原工程进行对照，建议设置
 
-#### 19. 修改方法内部局部变量名/change_local_property （可选）
+#### 21. 修改方法内部局部变量名/change_local_property （可选）
 ###### 定义在方法内部的局部变量，可选择是否修改
 
 ## ------version1.2 New-----
-#### 19. 修改属性/change_property （可选）
+#### 22. 修改属性/change_property （可选）
 ###### 选择是否修修改属性声明，优先级最高
 
-#### 20. 修改方法/change_method （可选）
+#### 23. 修改方法/change_method （可选）
 ###### 选择是否修修改方法，优先级最高
 
-#### 21. 属性声明乱序/properties_random （可选）
+#### 24. 属性声明乱序/properties_random （可选）
 ###### 选择是否打乱属性声明
 
-#### 22. 方法声明乱序/methods_random （可选）
+#### 25. 方法声明乱序/methods_random （可选）
 ###### 选择是否打乱方法声明和实现
 
-#### 23. block声明乱序/block_defines_random （可选）
+#### 26. block声明乱序/block_defines_random （可选）
 ###### 选择是否打乱block声明
 
-#### 24. import头文件导入声明乱序/imports_random （可选）
+#### 27. import头文件导入声明乱序/imports_random （可选）
 ###### 选择是否打乱import头文件导入声明
 
-#### 25. 静态常量声明乱序/statics_random （可选）
+#### 28. 静态常量声明乱序/statics_random （可选）
 ###### 选择是否打乱静态常量声明
 
-#### 26. @class声明乱序/class_defines_random （可选）
+#### 29. @class声明乱序/class_defines_random （可选）
 ###### 选择是否打乱@class声明，注意是@class 声明不是类声明的interface
 ###### 例：@class A; @class B; @class C --> @class C, @class A; @class B; 
 
-#### 27. interface声明乱序/interfaces_random （可选）
+#### 30. interface声明乱序/interfaces_random （可选）
 ###### 选择是否打乱interface声明，当单个文件内有多个interface，可选择打乱排版
 
-#### 28. extension声明乱序/extensions_random （可选）
+#### 31. extension声明乱序/extensions_random （可选）
 ###### 选择是否打乱extension声明，当单个文件内有多个extension，可选择打乱排版
 
-#### 29. implementation声明乱序/implementations_random （可选）
+#### 32. implementation声明乱序/implementations_random （可选）
 ###### 选择是否打乱implementation声明，当单个文件内有多个implementation，可选择打乱排版
 
 
-#### 30. delegate声明乱序/delegates_random （可选）
+#### 33. delegate声明乱序/delegates_random （可选）
 ###### 选择是否打乱delegate声明，当单个文件内有多个delegate，可选择打乱排版
 
-#### 31. 遵循代理声明乱序/complied_delegates_random （可选）
+#### 34. 遵循代理声明乱序/complied_delegates_random （可选）
 ###### 选择是否打乱遵循代理，当单个类遵循多个delegate，可选择打乱排版，注意与第30条的区别，第30条是代理定义声明，本条是遵循代理声明
 ###### 例：<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate> ---> <UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate>
 
-#### 32. 修改图片MD5值/change_image_md5 （可选）
+#### 35. 修改图片MD5值/change_image_md5 （可选）
 ###### 图片混淆
 
+#### 36.生成配置文件
+##### 帮助用户一键生成配置文件，提升配置效率，减少重复劳动。
 
-#### 33. 综合配置路径 （可选，强烈建议使用综合配置，方便快捷）
+#### 37. 综合配置路径 （可选，强烈建议使用综合配置，方便快捷）
 ###### json配置文件路径，内部必须为字典，key为说明条目标题后面的英文
 ##### 请注意：配置文件优先级高于输入框输入的规则，配置文件存在时, 输入框输入的配置不生效
 ##### 例：(可直接复制修改，也可以通过软件生成综合配置项生成)
@@ -229,6 +239,10 @@ json范例（可直接复制修改，忽略大小写，格式必须与范例一�
     
     "property_prefix": "",
     
+    "no_change_classname_path": "",
+    
+    "no_change_classname_all": false,
+
     "add_preposition": true,
     
     "change_local_property": true,
